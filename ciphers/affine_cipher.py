@@ -1,10 +1,16 @@
-from crypto_functions import is_relative_prime, ENCRYPTION_TABLE as enc_table, ENCRYPTION_TABLE_LENGTH as enc_table_length
+import math, random
+from constants import LENGTH, CHARACHTERS
 
-def main():
-    print("This is an affine cipher.")
-    message = input("Please enter a message: \n")
-    keys = affine_cipher_input(message, enc_table_length)
-    print(encrypt_message_affine(message, keys[0], keys[1], enc_table, enc_table_length))
+def gcd(a, b):
+    while a != 0:
+        a, b = b % a, a
+    return b
+
+def is_relative_prime(length, key):
+    if gcd(length, key) == 1:
+        return True
+    else:
+        return False
 
 def affine_cipher_input(message, enc_table_length):
     print("Valid first keys: \n")
@@ -40,6 +46,16 @@ def affine_cipher_input(message, enc_table_length):
 
     return key_mult, key_add
 
+def generate_keys_affine(length):
+    while True:
+        key_mult = math.floor(length*random.random())
+        if is_relative_prime(key_mult, length):
+            break
+
+    key_add = math.floor(length*random.random())
+
+    return key_mult, key_add
+
 def encrypt_message_affine(message, key_mult, key_add, enc_table, enc_table_length):
     encrypted_message = ""
     length = len(message)
@@ -52,5 +68,10 @@ def encrypt_message_affine(message, key_mult, key_add, enc_table, enc_table_leng
 
     return encrypted_message
 
-if __name__ == "__main__":
-    main()
+if (__name__ == "__main__"):
+    print("This is an affine cipher.")
+    message = input("Please enter a message: \n")
+    keys = affine_cipher_input(message, LENGTH)
+    print(encrypt_message_affine(message, keys[0], keys[1], CHARACHTERS, LENGTH))
+
+    generate_keys_affine(LENGTH)

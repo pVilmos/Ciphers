@@ -1,5 +1,15 @@
 #for more information on the theory visit:https://en.wikipedia.org/wiki/Affine_cipher
-from crypto_functions import is_relative_prime, ENCRYPTION_TABLE as enc_table, ENCRYPTION_TABLE_LENGTH as enc_table_length
+
+def gcd(a, b):
+    while a != 0:
+        a, b = b % a, a
+    return b
+
+def is_relative_prime(length, key):
+    if gcd(length, key) == 1:
+        return True
+    else:
+        return False
 
 def affine_decipher_input(message, enc_table_length):
     print("Valid first keys: \n")
@@ -84,5 +94,5 @@ def decrypt_message_affine(message, key_mult, key_add, enc_table, enc_table_leng
 
 if(__name__=="__main__"):
     message = input()
-    keys = affine_decipher_input(message, enc_table_length)
-    print(decrypt_message_affine(message, keys[0], keys[1], enc_table, enc_table_length))
+    keys = affine_decipher_input(message, LENGTH)
+    print(decrypt_message_affine(message, keys[0], keys[1], CHARACHTERS, LENGTH))

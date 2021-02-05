@@ -3,10 +3,7 @@
 from itertools import permutations
 from random import random
 from math import floor
-
-#alphabet
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-ALPHABET_LENGTH = len(ALPHABET)
+from constants import CHARACHTERS, LENGTH
 
 def decrypt_message_substitution(message, alphabet, decryption_table):
     decrypted_message = ""
@@ -24,5 +21,6 @@ def decrypt_message_substitution(message, alphabet, decryption_table):
 
 if(__name__=="__main__"):
     message = input()
+    encryption_table = input()
 
-    print(encrypt_message_substitution(message, ALPHABET, encryption_table))
+    print(encrypt_message_substitution(message, CHARACHTERS, encryption_table))

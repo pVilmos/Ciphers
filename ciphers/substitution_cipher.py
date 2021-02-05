@@ -2,31 +2,31 @@ from itertools import permutations
 from random import random
 from math import floor
 
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-ALPHABET_LENGTH = len(ALPHABET)
+CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+LENGTH = len(CHARACHTERS)
 
-def encrypt_message_substitution(message, alphabet, encryption_table):
+def encrypt_message_substitution(message, charachters, encryption_table):
     encrypted_message = ""
 
     #looping through the message
     for letter in message:
-        if letter not in alphabet:
+        if letter not in charachters:
             encrypted_message += letter
 
 
-        #leaving the the charachters the same that are not in the alphabet
+        #leaving the the charachters the same that are not in the charachters
         else:
-            encrypted_message += encryption_table[alphabet.index(letter)]
+            encrypted_message += encryption_table[charachters.index(letter)]
 
     return encrypted_message
 
-def generate_encryption_table(alphabet):
+def generate_encryption_table(charachters):
     encryption_table = ""
     #change type of alphabet
-    alphabet = list(ALPHABET)
+    alphabet = list(charachters)
 
     #loop through the encryption table
-    for i in range(ALPHABET_LENGTH, 0, -1):
+    for i in range(LENGTH, 0, -1):
 
         #pick out randomly a charachter from the alphabet
         pos = floor(i*random())
@@ -41,5 +41,4 @@ def generate_encryption_table(alphabet):
 
 if(__name__=="__main__"):
     message = input()
-
-    print(encrypt_message_substitution(message, ALPHABET, encryption_table))
+    print(encrypt_message_substitution(message, CHARACHTERS, encryption_table))

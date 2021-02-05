@@ -8,18 +8,7 @@ sys.path.insert(1, '../deciphers')
 #importing encrypting/decrypting algos
 from transposition_cipher import encrypt_message_transposition
 from transposition_decipher import decrypt_message_transposition
-
-
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXZabcdefghijklmnopqrstuvwxy0123456789 ,;.?!:"
-LENGTH = len(CHARACHTERS)
-
-#limit for the test text length
-TEXT_LIMIT = 100
-
-TEST_ROUNDS = 50
-
-#Only for epicness
-input("Start testing...")
+from constants import CHARACHTERS, LENGTH, TEXT_LIMIT, TEST_ROUNDS
 
 for i in range(0, TEST_ROUNDS):
 

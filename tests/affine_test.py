@@ -5,19 +5,18 @@ sys.path.insert(1, '../deciphers')
 
 from affine_cipher import encrypt_message_affine
 from affine_decipher import decrypt_message_affine, inverse_mod_add, inverse_mod_mult
-from crypto_functions import is_relative_prime
+from constants import CHARACHTERS, LENGTH, TEXT_LIMIT, TEST_ROUNDS
 
+def gcd(a, b):
+    while a != 0:
+        a, b = b % a, a
+    return b
 
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-LENGTH = len(CHARACHTERS)
-
-#limit for the test text length
-TEXT_LIMIT = 100
-
-TEST_ROUNDS = 50
-
-#Only for epicness
-input("Start testing...")
+def is_relative_prime(length, key):
+    if gcd(length, key) == 1:
+        return True
+    else:
+        return False
 
 for i in range(0, TEST_ROUNDS):
 
@@ -40,9 +39,6 @@ for i in range(0, TEST_ROUNDS):
     key_add = math.floor(LENGTH*random.random())
 
     #Test
-    print(text)
-    print(encrypt_message_affine(text, key_mult, key_add, CHARACHTERS, LENGTH))
-    print(decrypt_message_affine(encrypt_message_affine(text, key_mult, key_add, CHARACHTERS, LENGTH), key_mult, key_add, CHARACHTERS, LENGTH))
     if decrypt_message_affine(encrypt_message_affine(text, key_mult, key_add, CHARACHTERS, LENGTH), key_mult, key_add, CHARACHTERS, LENGTH) == text:
         print(True)
     else:

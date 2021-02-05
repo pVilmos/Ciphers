@@ -1,5 +1,17 @@
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+import math
+import random
+CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 LENGTH = len(CHARACHTERS)
+
+def generate_key_vigenere(word_length):
+
+    word = ""
+
+    for j in range(0, word_length):
+        pos = math.floor(LENGTH*random.random())
+        word += CHARACHTERS[pos]
+
+    return word
 
 def encrypt_message_vigenere(message, enc_word):
 

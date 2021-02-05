@@ -1,5 +1,4 @@
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-LENGTH = len(CHARACHTERS)
+from constants import LENGTH, CHARACHTERS
 
 def decrypt_message_vigenere(message, dec_word):
     dec_message = ''

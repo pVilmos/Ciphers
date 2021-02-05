@@ -5,19 +5,7 @@ sys.path.insert(1, '../deciphers')
 
 from vigenere_cipher import encrypt_message_vigenere
 from vigenere_decipher import decrypt_message_vigenere
-
-
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-LENGTH = len(CHARACHTERS)
-
-#limit for the test text length
-TEXT_LIMIT = 100
-
-TEST_ROUNDS = 50
-
-WORD_LIMIT = 20
-#Only for epicness
-input("Start testing...")
+from constants import CHARACHTERS, LENGTH, TEXT_LIMIT, TEST_ROUNDS, WORD_LIMIT
 
 for i in range(0, TEST_ROUNDS):
 
@@ -35,7 +23,7 @@ for i in range(0, TEST_ROUNDS):
         pos = math.floor(LENGTH*random.random())
         text += CHARACHTERS[pos]
 
-    #generate random text
+    #generate random word
     for j in range(0, word_length):
         pos = math.floor(LENGTH*random.random())
         word += CHARACHTERS[pos]

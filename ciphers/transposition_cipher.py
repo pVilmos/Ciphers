@@ -1,13 +1,5 @@
 from math import ceil
-
-#getting the correct input
-def main():
-    print("This a Transposition cipher. \nPlease enter a message:")
-
-    message = input()
-    key_limit = transposition_cipher_input(message)
-
-    print(encrypt_message_transposition(message, key_limit))
+import random
 
 #Common sense is not so common.
 def transposition_cipher_input(message):
@@ -24,6 +16,12 @@ def transposition_cipher_input(message):
             print("Please enter an integer: \n")
     return secret_key
 
+def generate_key_transposition(message):
+    key_limit = ceil(len(message)/2)
+
+    return ceil(key_limit*random.random())
+
+
 def encrypt_message_transposition(message, secret_key):
     encrypted_message = ""
     for i in range(0, secret_key):
@@ -32,4 +30,10 @@ def encrypt_message_transposition(message, secret_key):
     return encrypted_message
 
 if __name__ == '__main__':
-    main()
+    print("This a Transposition cipher. \nPlease enter a message:")
+
+    message = input()
+    print(generate_key_transposition(message))
+    key_limit = transposition_cipher_input(message)
+
+    print(encrypt_message_transposition(message, key_limit))

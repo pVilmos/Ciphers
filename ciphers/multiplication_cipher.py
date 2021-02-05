@@ -1,10 +1,15 @@
-from crypto_functions import gcd, is_relative_prime
-def main():
-    print("This is a multiplication cipher.")
-    message = input("Enter messsage:\n")
-    secret_key = multiplication_cipher_input(message)
-    print("Your message is " + str(encrypt_message_multiplication(message, secret_key)))
+from constants import CHARACHTERS, LENGTH
 
+def gcd(a, b):
+    while a != 0:
+        a, b = b % a, a
+    return b
+
+def is_relative_prime(length, key):
+    if gcd(length, key) == 1:
+        return True
+    else:
+        return False
 
 
 def multiplication_cipher_input(message):
@@ -31,14 +36,21 @@ def multiplication_cipher_input(message):
             print("Please enter a number from the list.")
     return secret_key
 
-def encrypt_message_multiplication(message, key):
-    enc_table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.:,;!?+-() "
-    enc_table_length = len(enc_table)
+
+def generate_key_multiplication(length):
+    while True:
+        key_mult = math.floor(length*random.random())
+        if is_relative_prime(key_mult, length):
+            break
+
+    return key_mult
+
+def encrypt_message_multiplication(message, key, charachters, length):
     encrypted_message = ""
     message_length = len(message)
     for i in range(0, message_length):
-        if message[i] in enc_table:
-            new_letter = enc_table[message.index(message[i])*key % enc_table_length]
+        if message[i] in charachters:
+            new_letter = charachters[message.index(message[i])*key % length]
             encrypted_message = encrypted_message + new_letter
         else:
             encrypted_message = encrypted_message + message[i]
@@ -46,4 +58,7 @@ def encrypt_message_multiplication(message, key):
     return encrypted_message
 
 if __name__ == "__main__":
-    main()
+    print("This is a multiplication cipher.")
+    message = input("Enter messsage:\n")
+    secret_key = multiplication_cipher_input(message)
+    print("Your message is " + str(encrypt_message_multiplication(message, secret_key, CHARACHTERS, LENGTH)))

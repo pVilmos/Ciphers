@@ -1,4 +1,3 @@
-from english_detection import detect_english
 from math import ceil
 
 def decrypt_message_transposition(message, key):
@@ -26,12 +25,5 @@ def decrypt_message_transposition(message, key):
 
 if(__name__ == "__main__"):
     message = input("Enter message to be decrypted: \n")
-    for i in range(2, ceil(len(message)/2)+1):
-        dec_message = decrypt_message_transposition(message, i)
-        print(dec_message)
-        print(i)
-        if detect_english(dec_message):
-            print(dec_message)
-            break
-        else:
-            pass
+    key = input("ENter key:")
+    print(decrypt_message_transposition(message, key))
