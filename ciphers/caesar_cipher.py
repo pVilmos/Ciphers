@@ -13,6 +13,8 @@ def encrypt_message_caesar(message, key, charachters, length):
         else:
             encrypted_message += i
 
+    return encrypted_message
+
 if __name__ == "__main__":
     print("This a Caesar cipher.")
 

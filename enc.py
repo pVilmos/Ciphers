@@ -1,25 +1,9 @@
-# python enc.py <option> <argument>
-#default arg one-pad cipher and writes to a file the modified file, the type of encoding and the required keys
-#OPTIONS:
-#-n --nowrite doesn't write to file, this should require a confirmation
-#--name to name the created file default is <filename>_encrypted
-#-a -affine for affine cipher optional arguments: key_mult, key_add
-#-c --caesar for caesar cipher optional arg: key
-#-m --multiplication for multiplication cipher optional arg: key
-#-r --reverse no arg
-#-s --substitution no arg
-#-t --transposition arg
-#-v --vigenere arg string
-#-m --mode option
-
 import re
 import sys
-from ciphers import affine_cipher as a, caesar_cipher as c, multiplication_cipher as m, reverse_cipher as r
+from ciphers import affine_cipher as a, caesar_cipher as c, multiplication_cipher as mu, reverse_cipher as r
 from ciphers import substitution_cipher as s, transposition_cipher as t, vigenere_cipher as v
 from datetime import datetime
-
-CHARACHTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-LENGTH = len(CHARACHTERS)
+from constants import CHARACHTERS, LENGTH
 
 arg_line = " ".join(sys.argv[1:])
 
@@ -33,7 +17,7 @@ HELP = (
         python {sys.argv[0]} -m <OPTION> <FILE>
 
     options:
-        vig
+        -m vig, aff, mul, ca, rev, sub, tra
 
     """
 )
@@ -138,8 +122,8 @@ if (__name__ == "__main__"):
                 write_file(new_file_name, content)
 
             elif mode == "mul":
-                key = m.generate_key_multiplication(LENGTH)
-                content = m.encrypt_message_multiplication(f, key, CHARACHTERS, LENGTH)
+                key = mu.generate_key_multiplication(LENGTH)
+                content = mu.encrypt_message_multiplication(f, key, CHARACHTERS, LENGTH)
                 write_key_file(m.group("FILE"), mode, str(key))
                 write_file(new_file_name, content)
 

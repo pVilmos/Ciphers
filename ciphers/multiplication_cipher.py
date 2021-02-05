@@ -1,4 +1,5 @@
 from constants import CHARACHTERS, LENGTH
+import math, random
 
 def gcd(a, b):
     while a != 0:
@@ -39,7 +40,7 @@ def multiplication_cipher_input(message):
 
 def generate_key_multiplication(length):
     while True:
-        key_mult = math.floor(length*random.random())
+        key_mult = int(math.floor(length*random.random()))
         if is_relative_prime(key_mult, length):
             break
 
