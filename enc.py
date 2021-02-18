@@ -46,7 +46,7 @@ def write_file(filename, content):
 def write_key_file(filename, mode, *keys):
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    with open('main.txt', 'a') as writer:
+    with open('follow.txt', 'a') as writer:
         writer.write(dt_string + " " + filename + " " + mode + " " + " ".join(keys) + "\n")
 
 if (__name__ == "__main__"):
