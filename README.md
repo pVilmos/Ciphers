@@ -1,8 +1,8 @@
-#File Encrypting program in Python
+# File Encrypting program in Python
 
-##Quick how to use:
+## Quick how to use:
 
-Type 'python enc.py -m <OPTION> <FILE>' into your command line, where <OPTION> can be any the following:
+Type `python enc.py -m <OPTION> <FILE>` into your command line, where <OPTION> can be any the following:
 
 vig, aff, mul, ca, rev, sub, tra
 vig for the vigenere cipher
