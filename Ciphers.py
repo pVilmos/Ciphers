@@ -1,4 +1,4 @@
-from CipherObject import Cipher
+from CipherClass import Cipher
 import math, random
 
 class Affine(Cipher):
@@ -58,7 +58,7 @@ class Affine(Cipher):
         self.mode = mode
 
     def add_key(self, key0, key1):
-        if is_relative_prime(key0, self.LENGTH):
+        if self.gcd(key0, self.LENGTH)==1:
             self.key0 = key0
             self.inverse_mult()
         else:
@@ -96,9 +96,6 @@ class Affine(Cipher):
 
         self.message = mod_message
 
-    def encrypt_file(self, file):
-        pass
-
 ##-------------------------------------------------------##
 ##-------------------------------------------------------##
 ##-------------------------------------------------------##
@@ -108,10 +105,6 @@ class Multiplication(Affine):
 
     def __init__(self):
         super().__init__(name="multiplication")
-        self.key = self.key0
-
-    def add_key(self, key):
-        self.key = key
 
     def generate_key(self):
         super().generate_key()
@@ -125,15 +118,13 @@ class Multiplication(Affine):
 class Caesar(Affine):
     def __init__(self):
         super().__init__(name="caesar")
-        self.key = self.key1
 
     def generate_key(self):
         super().generate_key()
         self.key0 = 1
         self.invkey0 = 1
 
-    def add_key(self, key):
-        self.key = key
+
 
 ##-------------------------------------------------------##
 ##-------------------------------------------------------##
@@ -145,18 +136,19 @@ class Reverse(Cipher):
         super().__init__(name="reverse")
         self.message = message
 
-    def modify_string(self, message):
-        self.message = message[::-1]
+    def modify_string(self):
+        self.message = self.message[::-1]
 
 ##-------------------------------------------------------##
 ##-------------------------------------------------------##
 ##-------------------------------------------------------##
 
 class Transposition(Cipher):
-    def __init__(self,key=0, mode="enc"):
+    def __init__(self,key=0, mode="enc", message=""):
         super().__init__(name="transposition")
         self.mode = mode
         self.key = key
+        self.message = message
 
     def generate_key(self):
         key_limit = math.ceil(len(self.message)/2)
@@ -303,4 +295,40 @@ class Substitution(Cipher):
                     message += self.CHARACHTERS[self.key.index(letter)]
             self.message = message
 
-class PublicKeyCipher
+#still in work
+class PublicKeyCipher(Cipher):
+    def __init__(self):
+        super().__init__(name="RSA")
+
+
+    import primeGenerator
+    def generate_key(self, keysize=1024):        
+        p = 0
+        q = 0
+        while p==q:
+            p = primeGenerator.generateLargePrime()
+            q = primeGenerator.generateLargePrime()
+        n = p * q
+        RSAmodulus = n
+
+
+        def gcd(a, b):
+
+            while a != 0:
+                a, b = b % a, a
+            return b
+
+
+        def inverse_mult(number, p, q):
+            phi = (p-1)*(q-1)
+
+            return (number ** (phi-1)) % (p*q)
+
+        while True:
+            e = random.randrange(2 ** (keysize-1), 2**keysize)
+            if gcd(e, (p-1)*(q-1)):
+                publicExponent = e
+                break
+        privateExponent = inverse_mult(publicExponent, p, q)
+        self.publicKey = (RSAmodulus, publicExponent)
+        self.privateKey = (RSAmodulus, privateExponent)

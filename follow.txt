@@ -1,2 +1,21 @@
-26/02/2021 12:44:43 example.txt vig zxSOgLGWNJzCPFYEpH
-26/02/2021 12:53:31 example.txt vig ICCNTWqYxr
+19/04/2021 00:16:41 example.txt caesar enc 3
+19/04/2021 00:23:36 example.txt caesar dec 34
+19/04/2021 00:24:13 example.txt caesar enc 34
+19/04/2021 00:24:21 example.txt caesar dec 34
+19/04/2021 00:25:06 example.txt caesar dec 34
+19/04/2021 00:25:14 example.txt caesar dec 34
+19/04/2021 00:25:21 example.txt caesar dec 34
+19/04/2021 00:25:31 example.txt caesar enc 34
+19/04/2021 00:36:59 example.txt multiplication enc 33
+19/04/2021 00:37:15 example.txt multiplication enc 51
+19/04/2021 00:37:21 example.txt multiplication dec 49
+19/04/2021 00:37:36 example.txt multiplication enc 49
+19/04/2021 00:37:48 example.txt multiplication dec 51
+19/04/2021 00:37:54 example.txt multiplication dec 33
+19/04/2021 00:42:28 example.txt reverse enc/dec 
+19/04/2021 00:42:38 example.txt reverse enc/dec 
+19/04/2021 00:52:39 example.txt vigenere enc YabOKkQgxsXArmjVOp
+19/04/2021 00:53:04 example.txt vigenere enc ySpcHufdXTxCYZpzCo
+19/04/2021 00:54:32 example.txt vigenere enc yzHyvuePFldLtfSNE
+19/04/2021 00:54:40 example.txt vigenere enc dgAliKNQGxNl
+19/04/2021 00:55:43 example.txt vigenere dec dgAliKNQGxNl
