@@ -18,7 +18,7 @@ def encrypt_message_caesar(message, key, charachters, length):
 if __name__ == "__main__":
     print("This a Caesar cipher.")
 
-    generate_key_caesar(LENGTH)
+    key = generate_key_caesar(LENGTH)
 
     message = input("Enter the message: \n")
 

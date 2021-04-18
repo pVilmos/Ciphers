@@ -1,0 +1,73 @@
+from Ciphers import Affine
+affine = Affine()
+affine.generate_key()
+affine.key0
+affine.invkey0
+affine.key1
+affine.invkey1
+affine.modify_string("This is a message.", mode="enc")
+affine.modify_string(affine.message, mode="dec")
+
+from Ciphers import Multiplication
+mult = Multiplication()
+mult.generate_key()
+mult.key0
+mult.invkey0
+mult.key1
+mult.invkey1
+mult.modify_string("This is a message.", mode="enc")
+mult.message
+mult.modify_string(mult.message, mode="dec")
+
+from Ciphers import Caesar
+caesar = Caesar()
+caesar.generate_key()
+caesar.key0
+caesar.invkey0
+caesar.key1
+caesar.invkey1
+caesar.modify_string("This is a message.", mode="enc")
+caesar.message
+caesar.modify_string(caesar.message, mode="dec")
+
+from Ciphers import Transposition
+trans = Transposition()
+trans.message = "This is a message."
+trans.key
+trans.mode
+trans.message
+trans.generate_key()
+trans.key
+trans.modify_string()
+trans.message
+trans.mode = "dec"
+trans.modify_string()
+trans.message
+
+from Ciphers import Vigenere
+vigenere = Vigenere()
+vigenere.message = "This is a message."
+vigenere.key
+vigenere.mode
+vigenere.message
+vigenere.generate_key()
+vigenere.key
+vigenere.modify_string()
+vigenere.message
+vigenere.mode = "dec"
+vigenere.modify_string()
+vigenere.message
+
+from Ciphers import Substitution
+subs = Substitution()
+subs.message = "This is a message."
+subs.key
+subs.mode
+subs.message
+subs.generate_key()
+subs.key
+subs.modify_string()
+subs.message
+subs.mode = "dec"
+subs.modify_string()
+subs.message
