@@ -1,12 +1,13 @@
-#File Encrypting program in Python
+# File Encrypting program in Python
 
-##Quick how to use:
+## Quick how to use:
 
 Type 'python cipher.py [-c <Cipher>] [-m <Method>] [-k <Keys>] (-s <STRING>)/(-f <FILE>)' into your command line, where <Cipher> can be any the following:
 
 vig, aff, mult, cas, rev, sub
 
 vig for the vigenere cipher
+
 aff for the affine cipher
 mult for the multiplication cipher
 sub for the substitution cipher
